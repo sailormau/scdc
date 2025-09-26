@@ -9,5 +9,14 @@
 width="300" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
 </iframe>
 
+        <script>
+  function sendMessage() {
+    var message = document.getElementById("message").value;
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "https://discord.com/api/webhooks/1421030771883380868/VGZgQChsDIXTMmhbluX-u5a52zOxQft40pjPKJ4Xumzev5f1eDZq8BK2anEZnmMLevnd", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify({ content: message }));
+  }
+</script>
 </body>
 </html>
