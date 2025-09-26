@@ -9,6 +9,9 @@
 width="300" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
 </iframe>
 
+        <hr>
+
+        
 
         <textarea id="message" placeholder="Type a message..."></textarea>
 <button onclick="sendMessage()">Send</button>
@@ -20,6 +23,21 @@ width="300" height="500" allowtransparency="true" frameborder="0" sandbox="allow
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify({ content: message }));
   }
+
+            <script src="https://cdn.jsdelivr.net/npm/socket.io@2.3.0/dist/socket.io.js"></script>
+<script>
+const socket = io('https://your-repl-url:5000');
+document.getElementById("send-button").addEventListener("click", () => {
+const message = document.getElementById("message").value;
+socket.emit('message', message);
+});
+socket.on('message', (msg) => {
+const chatLog = document.getElementById('chat-log');
+const messageElement = document.createElement('div');
+messageElement.textContent = msg;
+chatLog.appendChild(messageElement);
+});
+</script>
 </script>
 </body>
 </html>
